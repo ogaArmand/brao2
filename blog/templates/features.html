@@ -1,0 +1,29 @@
+<!-- Features -->
+<div id="features-wrapper">
+    <div class="container">
+        <div class="row">
+            {% for membre in lebureau %}
+            <div class="col-4 col-12-medium">
+
+                <!-- Box -->
+                <h1 style="text-align: center;">Liste des membres du bureau</h1>
+                    <section class="box feature">
+                        <a href="#" class="image featured"><img src="{{membre.image.url}}" alt="" /></a>
+                        <div class="inner">
+                            <header>
+                                <h2>{{membre.pasteur}}</h2>
+                                <p>Maybe here as well I think</p>
+                                <p class="card-text">{{membre.eglise}}</p>
+                                <p class="card-text">{{membre.poste}}</p>
+                                
+                            </header>
+                            <p class="card-text">Publié il y a {{membre.create_at |timesince}}</p>
+                        </div>
+                    </section>
+
+            </div>
+
+            {%endfor%}
+        </div>
+    </div>
+</div>

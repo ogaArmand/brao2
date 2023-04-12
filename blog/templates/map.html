@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Carte Google Maps avec itinéraire</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 14,
+                center: {lat: 48.8566, lng: 2.3522} // Paris
+            });
+            var directionsService = new google.maps.DirectionsService;
+            var directionsDisplay = new google.maps.DirectionsRenderer({
+                map: map
+            });
+            directionsService.route({
+                origin: {lat: 48.8566, lng: 2.3522}, // Paris
+                destination: {lat: 51.5074, lng: -0.1278}, // Londres
+                travelMode: 'DRIVING'
+            }, function(response, status) {
+                if (status === 'OK') {
+                    directionsDisplay.setDirections(response);
+                } else {
+                    window.alert('Directions request failed due to ' + status);
+                }
+            });
+        }
+    </script>
+    <style>
+        #map {
+            height: 100%;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body onload="initMap()">
+    <div id="map"></div>
+</body>
+</html>

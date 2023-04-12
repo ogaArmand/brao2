@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col md-8">
+      <h1>Detail article</h1>
+      
+      {% if article.image == "http://default" %}
+      <a href="{% url 'detail' article.id %}">
+        <img src="https://api.lorem.space/image/house?w=150&h=150" class="card-img-top" alt="Fissure in Sandstone"
+          style="height: 200px;" />
+      </a>
+      {% else %}
+      <a href="{% url 'detail' article.id %}">
+        <img src="{{article.image.url}}" class="card-img-top" alt="Fissure in Sandstone" style="height: 200px;" />
+      </a>
+      {% endif %}
+
+      <h2>{{article.title}}</h2>
+      <p>
+        {{article.desc}}
+      </p>
+    </div>
+    <div class="col md-4">
+      <h1>Les articles en relation</h1>
+    </div>
+  </div>
+</div>
+{% endblock %}
